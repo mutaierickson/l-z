@@ -131,7 +131,7 @@ export default function Home() {
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-6 w-6 text-success" />
                   <div>
-                    <p className="font-semibold text-foreground">ISO 13485 Certified</p>
+                    <p className="font-semibold text-foreground">ISO Certified</p>
                     <p className="text-sm text-muted-foreground">Quality Guaranteed</p>
                   </div>
                 </div>

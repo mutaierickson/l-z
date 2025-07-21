@@ -20,7 +20,7 @@ export default function Products() {
   const { toast } = useToast()
 
   const filteredAndSortedProducts = useMemo(() => {
-    let filtered = PRODUCTS.filter(product => {
+    const filtered = PRODUCTS.filter(product => {
       const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                            product.description.toLowerCase().includes(searchTerm.toLowerCase())
       const matchesCategory = selectedCategory === "all" || product.category === selectedCategory
@@ -43,7 +43,17 @@ export default function Products() {
     return filtered
   }, [searchTerm, selectedCategory, sortBy])
 
-  const handleAddToCart = (product: any) => {
+  interface Product {
+    id: string
+    name: string
+    description: string
+    price: number
+    category: string
+    image: string
+    inStock: boolean
+  }
+
+  const handleAddToCart = (product: Product) => {
     addToCart(product)
     toast({
       title: "Added to cart",
@@ -51,7 +61,7 @@ export default function Products() {
     })
   }
 
-  const handleToggleFavorite = (product: any) => {
+  const handleToggleFavorite = (product: Product) => {
     if (isFavorite(product.id)) {
       removeFromFavorites(product.id)
       toast({
